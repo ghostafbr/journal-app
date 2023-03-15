@@ -18,26 +18,25 @@ import {
 } from '../../store/auth';
 import { useMemo } from 'react';
 
+const formData = {
+  email: '',
+  password: '',
+};
+
 export const LoginPage = () => {
   const { status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const { email, password, onInputChange, formState } = useForm({
-    email: '',
-    password: '',
-  });
+  const { email, password, onInputChange, formState } = useForm(formData);
 
   const isAuth = useMemo(() => status === 'checking', [status]);
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-
-    // dispatch(checkingAuth());
     dispatch(startLoginWithEmailPassword(formState));
   };
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn');
     dispatch(startGoogleSignIn());
   };
 
