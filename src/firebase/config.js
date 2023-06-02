@@ -2,17 +2,27 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore/lite';
+import { getEnvironments } from '../helpers';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+const {
+  VITE_APIKEY,
+  VITE_AUTHDOMAIN,
+  VITE_PROJECTID,
+  VITE_STORAGEBUCKET,
+  VITE_MESSAGINGSENDERID,
+  VITE_APPID,
+} = getEnvironments();
+
+// testing
 const firebaseConfig = {
-  apiKey: 'AIzaSyD1J9zrMC5BI5u_e3NM3Mui9JYb4hZFMiE',
-  authDomain: 'journalapp-react-742da.firebaseapp.com',
-  projectId: 'journalapp-react-742da',
-  storageBucket: 'journalapp-react-742da.appspot.com',
-  messagingSenderId: '268386636311',
-  appId: '1:268386636311:web:1a350e53c0461ac1234252',
+  apiKey: VITE_APIKEY,
+  authDomain: VITE_AUTHDOMAIN,
+  projectId: VITE_PROJECTID,
+  storageBucket: VITE_STORAGEBUCKET,
+  messagingSenderId: VITE_MESSAGINGSENDERID,
+  appId: VITE_APPID,
 };
 
 // Initialize Firebase
